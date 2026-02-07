@@ -13,7 +13,11 @@ public class EmployeeService {
     @Autowired
     private EmployeeInterface employeeInterface;
 
-    public List<Employee> getEmployee(){
+    public List<Employee> getEmployee() {
         return employeeInterface.findAll();
+    }
+
+    public Employee saveEmployee(Employee emp) {
+        return employeeInterface.save(emp);
     }
 }

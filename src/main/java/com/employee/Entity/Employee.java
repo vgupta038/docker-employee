@@ -12,6 +12,7 @@ public class Employee {
 
     private String empName;
     private String empId;
+    private String departmentName;
 
     public String getEmpName() {
         return empName;
@@ -27,5 +28,13 @@ public class Employee {
 
     public void setEmpId(String empId) {
         this.empId = empId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
