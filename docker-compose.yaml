@@ -1,0 +1,43 @@
+version: "1.0"
+services:
+  mysql:
+    image: mysql/mysql-server
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: employee_db
+      MYSQL_USER: vishal
+      MYSQL_PASSWORD: vishal
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - emp-dept-net
+
+  employee-service:
+    image: vgupta038/employee-image:1.0.0
+    container_name: employee-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - emp-dept-net
+
+  department-service:
+    image: vgupta038/department-image:1.0.0
+    container_name: department-container
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    networks:
+      - emp-dept-net
+
+networks:
+  emp-dept-net:
+
+volumes:
+  mysql-data:
