@@ -40,7 +40,7 @@ public class EmployeeController {
     @PostMapping("/employee")
     public void addEmployee(@RequestBody Employee employee) {
 
-        String url = "http://department-container:8080/departments";
+        String url = "http://department-service:8080/departments";
 
         ResponseEntity<List<Department>> response =
                 restTemplate.exchange(
